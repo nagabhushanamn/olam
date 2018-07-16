@@ -1,0 +1,370 @@
+
+
+Module-1
+------------------------------------------------------------------------
+How Git Works
+
+    We’re going to talk about the internals of Git.
+
+    If you want to master Git, don’t worry about learning the commands.
+    Instead, learn the model.
+
+------------------------------------------------------------------------
+
+    Git Is..
+    ...a Distributed Revision Control System
+
+    Git Is..
+    ...a Revision Control System
+
+    Git Is..
+    ...a Stupid Content Tracker
+
+    Git Is..
+    ...a Persistent Map
+
+------------------------------------------------------------------------
+
+    Values and Keys
+
+    Any sequence of bytes  ----> SHA1 hash
+
+    “Apple Pie”            ----> 23991897e13e47ed0adb91a0082c31c82fe0cbe5
+
+------------------------------------------------------------------------
+
+Every object in Git has its own SHA1.
+
+------------------------------------------------------------------------
+
+    Git Is..
+    ...a Persistent Map
+
+> git hash-object "Apple pie"
+> echo "Apple Pie"
+> echo "Apple Pie" | git hash-object --stdin
+> echo "Apple Pie" | git hash-object --stdin -w
+> git init
+> ls
+> ls -a
+> echo "Apple Pie" | git hash-object --stdin -w
+> open .git
+> git cat-file <SHA1>
+
+
+------------------------------------------------------------------------
+
+
+Git Is..
+...a Stupid Content Tracker
+
+
+in cookbook directory,
+
+> ls
+> cat menu.txt
+> ls recipes/
+> cat recipes/README.txt
+> cat recipes/apple_pie.txt
+> tree .
+> git init
+> ls -a
+> open .git/
+> git status
+> git add menu.txt
+> git add recipes/README.txt
+> git add recipes/apple_pie.txt
+> git commit -m "First commit"
+> git status
+> git log
+> open .git/objects
+> git cat-file -p <commit-SHA1>
+> open .git/objects/
+> git cat-file -p <tree-SHA1>
+> git cat-file -p <blob-SHA1>
+> ..
+
+------------------------------------------------------------------------
+
+    Git Is..
+    ...a Revision Control System
+
+
+ in cookbook directory
+
+ > vim menu.txt
+ > git status
+ > git add menu.txt
+ > git commit -m "Add cake"
+ > git status
+ > git log
+ > git cat-file -p <last commit SHA1>
+ ..
+
+ > git count-objects 
+
+
+ > git tag -a mytag -m "i love cheesecake"
+ > git tag
+ > git cat-file -p mytag
+
+ ------------------------------------------------------------------------
+
+ Git Objects
+
+   - blobs
+   - Trees
+   - Commits
+   - Annotated Tags
+
+ ------------------------------------------------------------------------
+
+What Git Really is ?
+
+    => It is Hight-Level File-system on Native-File system
+    
+    => content-tracker 
+------------------------------------------------------------------------
+
+
+Module-2
+------------------------------------------------------------------------
+
+on cookbook directory 
+
+> tree
+> git log
+> git branch
+> open .git/
+
+A branch is just a reference to a commit
+
+> git branch lisa
+> git branch
+> open .git/
+> cat .git/refs/heads/master 
+> cat .git/refs/heads/lisa
+> git branch
+> open .git/
+> cat .git/HEAD 
+
+HEAD is just a reference to a branch
+
+> tree
+
+> vim recipes/apple_pie.txt
+
+    pre-made pastry
+    1/2 cup butter
+    3 tbsp flour
+    1 cup sugar
+    8 granny Smith apples
+
+> git status
+> git add recipes/apple_pie.txt
+> git status
+> git commit -m "Add recipe"
+> git log
+> cat .git/refs/heads/master 
+> cat .git/HEAD
+> git branch  
+> git checkout lisa
+> git branch
+> cat .git/HEAD
+> tree
+> cat recipes/apple_pie.txt
+> git log
+
+> vim recipes/apple_pie.txt
+
+
+    pre-made pastry
+    1/2 cup butter
+    3 tbsp flour
+    1 cup sugar
+    1 tbsp other
+    10 granny Smith 
+    
+> git status
+> git add recipes/apple_pie.txt
+> git status
+> git commit -m "Add Lisa's version of the pie"
+> git log
+
+
+------------------------------------------------------------------------
+
+// Merging
+
+> git checkout master
+> git branch
+> cat recipes/apple_pie.txt
+> git merge lisa
+> git status
+> vim recipes/apple_pie.txt
+> git status
+> git add recipes/apple_pie.txt
+> git status
+> git commit
+> git log
+> git cat-file -p <last-commit-SHA1>
+
+
+------------------------------------------------------------------------
+
+=> references(links) b/w commits for 'history' else 'content'
+   
+=> trees & blobs  makes Git content-management is simple
+
+=> git(mostly) doesnt care about your working area
+
+------------------------------------------------------------------------
+
+fast-forward merge
+
+> git checkout lisa
+> git merge master
+
+
+------------------------------------------------------------------------
+
+
+> git checkout master
+> git log
+> git checkout <Add lisa's version of the pie>
+> cat .git/HEAD
+> git branch
+> vim recipes/apple_pie.txt
+
+    change apples to 20
+
+> git add recipes/
+> git commit -m "Add more apples"
+> vim recipes/apple_pie.txt
+> git add recipes/apple_pie.txt
+> git commit -m "Remove sugar"
+> git log
+
+> git checkout master
+> git checkout <SHA1>
+> git branch nogood
+> git checkout master
+
+
+
+------------------------------------------------------------------------
+
+
+3 Rules
+
+1. The current branch tracks new commits
+2. When you move to another commit, Git updates your working directory
+3. Unreachable objects are garbage collected
+
+
+
+
+------------------------------------------------------------------------
+
+// Module-3
+
+ Rebasing
+
+> git stats
+> git branch
+> git branch spaghetti
+> git checkout spaghetti
+
+--------
+> vim menu.txt 
+> git add menu.txt
+> git commit -m "Add spaghetti"
+
+> touch recipes/spaghetti_all_carbonara.txt
+> vim recipes/spaghetti_all_carbonara.txt 
+> git status
+> git add recipes/spaghetti_all_carbonara.txt
+> git commit -m "Add spaghettin ingredients"
+---------
+
+> git branch
+> git rebase master
+
+
+> git checkout master
+> git rebase spaghetti
+
+
+
+
+--------------------------------------------
+Rebase  vs Merge
+
+Merge  => Preserve History
+Rebase => Refactor History
+
+
+when in doubt, just merge
+--------------------------------------------
+
+Tags
+
+> git tag
+
+2 typs of tags
+
+    - Annotated Tags
+    - light-weight tag
+
+> git log -1    
+> git tag dinner
+> git tag
+> open .git
+> cat .git/refs/tags/dinner
+
+
+A tag is like a branch that dosent move
+
+
+------------------------------------------
+
+ Distributed (Re)Version Control System 
+
+
+> git clone <url>
+> cd <dir>
+> ls
+> ls -a
+> git branch
+> ls .git/objects/
+> ls
+
+
+> vim .git/config
+> git branch
+> git branch --all
+> open .git/
+> git show-ref master
+> git show-ref lisa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

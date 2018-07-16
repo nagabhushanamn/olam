@@ -1,0 +1,46 @@
+
+
+what is sonar-qube?
+
+1. free & open source
+2. supports many languages
+3. code duplicates, unit testing
+4. code coverage 
+5. code complexity
+6. historical reports
+7. can work with many buld tools - ANT, Maven,Gtadle
+8. Eclipse --sonarlint--
+
+
+SonarQube  Arch
+------------------
+
+1. Sonar Runner/Scanner   ( ANT, MAVEN , JENKINS )
+2. Source Code
+3. Sonar Analyzer
+4. Database
+5. Web analysis report ( http://localhost:9000)
+
+
+
+SonarQube Setup
+------------------
+
+- get&un zip
+- change properties if required
+- start
+- 
+
+
+SonarQube with Maven-scanner
+---------------------------
+
+
+
+Integerate SonarQube with JENKINS
+---------------------------------
+
+
+
+
+
