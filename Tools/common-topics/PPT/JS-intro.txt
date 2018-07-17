@@ -1,0 +1,78 @@
+
+
+Ref:
+http://crockford.com/
+
+
+//---------------------------------------------------------------------------------
+
+.intro
+
+ - scriptng lang for web-pages in browser-envi( client-side)
+ +
+ - server-side lang on Node.js ( javascript runtime )
+ - Mobile Native Applns
+ 
+
+//---------------------------------------------------------------------------------
+
+.js-lang features
+
+    - FP + OOP
+    - dynamic data-types
+
+    - Non-blocking IO
+    - Single-Threaded process, can execute concurrent aactions becoz non-blocking IO
+
+//---------------------------------------------------------------------------------
+
+  js-lang is based on 'ECMAScript spec'
+  latest : ES7
+
+ //--------------------------------------------------------------------------------- 
+
+How to run .js-program ?
+
+    => we need .js-runtime/engine
+
+    browser-envi
+
+    1. chrome  ( v8 -> c++ )
+    2. firefox ( rhino/spider -> java )
+    3. IE/Edge ( chakra )
+    4. Safari  ( Nitro )
+
+    ..........
+
+    other-envi
+
+    1. Node.js ( v8 )
+    2. JVM     ( rhino / nashorn )
+    3. MongoDB
+    4. Adobe
+    5. Apache CouchDB
+    ..........
+
+//--------------------------------------------------------------------------------- 
+
+    https://kangax.github.io/compat-table/es6/
+    https://caniuse.com/
+
+
+//--------------------------------------------------------------------------------- 
+
+"Hello World"
+
+//--------------------------------------------------------------------------------- 
+
+Level-1 :
+    - data-types
+    - executtion-contexts / scopes
+    - FP 
+    - OOP
+level-2 : 
+    - ES6/Es7 syntax & New-api
+    - JS-modules    
+    - Concurrency Model with Event-Loop
+    - Async Apis ( Promise & RxJS )
+//--------------------------------------------------------------------------------- 

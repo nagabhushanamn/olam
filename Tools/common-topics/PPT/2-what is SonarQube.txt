@@ -8,7 +8,7 @@ what is sonar-qube?
 4. code coverage 
 5. code complexity
 6. historical reports
-7. can work with many buld tools - ANT, Maven,Gtadle
+7. can work with many buld tools - ANT, Maven,Gradle
 8. Eclipse --sonarlint--
 
 
@@ -44,3 +44,15 @@ Integerate SonarQube with JENKINS
 
 
 
+-----------------------------------------
+
+Java - Naming conventions
+
+
+keywords ==> lower-case
+package names ==> lower-case
+Type names ( class , interface , enum , annotation ) ==> Pascal-case   ( A____B____C____)
+var / method    ==> camel-case  ( _____A____B_____)
+constant var    ==> upper-case
+
+----------------------------------------------

@@ -1,0 +1,51 @@
+
+
+  ---------------------------------------------
+    java tech
+   --------------------------------------------- 
+   1. Java SE  ( core apis )
+        -> stand-alone appln
+        -> n/w ing appln
+   2. Java EE
+        -> web appln
+        -> enterprise appln
+   3. Java ME
+   4. Java Fx       
+   5. Embedded Java
+   ---------------------------------------------   
+   java programming style : component(s) & container  = java application
+
+   component ==> appln business logic
+   container ==> infra logic
+   --------------------------------------------
+   a. Java SE
+
+        1. application       ==> standalone-JRE
+        2. applet            ==> Applet-Viewer / browser with JRE
+
+    b. Java EE
+
+        1. servlet & JSP    ==> web-container ( e.g Tomcat , Jetty ,.. )   with server-side JRE 
+        2. EJB ( Enterpsise Java Beans )  ==> EJB-container ( e.g glassfish, tomee ,..)
+
+    ------------------------------------------------    
+    web-server  
+    e.g
+            - IIS
+            - Apache Http
+            - INGNX
+     JEE Application-server      
+                web-container + EJB container + other enterprise-services
+                e.g
+                 Oracle ==> weblogic  
+                 IBM    ==> websphere 
+                 JBOSS
+    -------------------------------------------------------------------------
+    spring-source
+        - spring Framework
+     ------------------------------------------------------------------------    
+
+            
+
+
+

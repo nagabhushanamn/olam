@@ -1,0 +1,305 @@
+
+
+what is Redis ?
+
+//----------------------------------------------------------------------------------------------
+
+Redis is a NoSQL (Not only SQL) advanced key-value data store
+
+It is also referred to as a data structure server
+because of its powerful data types, such as Strings, Hashes, Lists, Sets, Sorted Sets, Bitmaps, and HyperLogLogs
+
+By default, Redis saves all data in the memory,
+therefore read and write operations are very fast.
+
+It can also cause data to persist in the disk. 
+
+Data persistence in Redis can be achieved by creating a binary snapshot of the stored data 
+or a human-readable file with a sequence of all executed commands over time.
+
+Redis includes configurable key expiration, transactions, and publish/subscribe features.
+
+It also provides Lua scripting to extend Redis to create new commands
+
+Combined, these features transform Redis into the Swiss Army knife of data type storage.
+
+//---------------------------------------------------------------------------------------------- 
+
+
+Redis stands for REmote DIctionary Server.
+
+It was written in C by Salvatore Sanfilippo in 2006 and currently has many contributors.
+
+There are Redis clients available for over 30 programming languages. 
+
+The open source project can be found at https://github.com/antirez/redis. 
+The official Redis documentation is also a really good resource of knowledge and can be found at http://redis.io
+
+Redis is a well-established open source project and has been used in production for years by big companies,
+including Twitter, GitHub, Tumblr, Pinterest, Instagram, Hulu, Flickr, and The New York Times.
+
+//---------------------------------------------------------------------------------------------- 
+
+
+Installation
+
+$ curl -O http://download.redis.io/releases/redis-3.0.2.tar.gz
+$ tar xzvf redis-3.0.2.tar.gz
+$ cd redis-3.0.2
+$ sudo make install
+
+
+//---------------------------------------------------------------------------------------------- 
+
+Hello Redis (command-line interface examples)
+
+Redis comes with several executables. 
+we are going to focus on redis-server and redis-cli.
+
+$ redis-server
+
+$ redis-cli
+
+//---------------------------------------------------------------------------------------------- 
+
+127.0.0.1:6379> SET philosopher "socrates" OK
+127.0.0.1:6379> GET philosopher
+"socrates"
+127.0.0.1:6379> HELP SET
+127.0.0.1:6379> KEYS p*
+
+//---------------------------------------------------------------------------------------------- 
+
+
+Hello World with Node.js and Redis
+
+
+var redis = require("redis"); // 1
+var client = redis.createClient(); // 2
+client.set("my_key", "Hello World using Node.js and Redis"); // 3 client.get("my_key", redis.print); // 4
+client.quit(); // 5
+
+
+//---------------------------------------------------------------------------------------------- 
+
+Redis data types
+
+1. Strings
+
+    A String can behave as an integer, float, text string, or bitmap based on its value and the commands used.
+    It can store any kind of data: text (XML, JSON, HTML, or raw text), integers, floats, or binary data (videos, images, or audio files).
+    A String value cannot exceed 512 MB of text or binary data.
+
+    The following are some use cases for Strings:
+
+        - Cache mechanisms:
+
+            - It is possible to cache text or binary data in Redis,
+             which could be anything from HTML pages and API responses to images and videos
+        
+        - Cache with automatic expiration
+
+            - This is very useful when database queries take a long time to run
+              and can be cached for a given period of time. Consequently,
+              this avoids running those queries too frequently and can give a performance boost to applications.
+
+        - Counting
+
+             - Good examples of counters are page views, video views, and likes.
+
+
+
+    String examples with redis-cli
+
+    127.0.0.1:6379> MSET first "First Key value" second "Second Key value"
+    127.0.0.1:6379> MGET first second
+
+    127.0.0.1:6379> SET current_chapter "Chapter 1"
+    127.0.0.1:6379> EXPIRE current_chapter 10
+    127.0.0.1:6379> GET current_chapter
+    127.0.0.1:6379> TTL current_chapter
+    127.0.0.1:6379> TTL current_chapter
+    127.0.0.1:6379> TTL current_chapter
+    127.0.0.1:6379> GET current_chapter
+
+
+    127.0.0.1:6379> SET counter 100
+    127.0.0.1:6379> INCR counter
+    127.0.0.1:6379> INCRBY counter 5
+    127.0.0.1:6379> DECR counter
+    127.0.0.1:6379> DECRBY counter 100
+    127.0.0.1:6379> GET counter
+    127.0.0.1:6379> INCRBYFLOAT counter 2.4
+
+
+
+    Building a voting system with Strings using Node.js
+
+
+    127.0.0.1:6379> SET article:12345:headline "Google Wants to Turn Your Clothes Into a Computer"
+    127.0.0.1:6379> SET article:10001:headline "For Millennials, the End of the TV Viewing Party"
+    127.0.0.1:6379> SET article:60056:headline "Alicia Vikander, Who Portrayed Denmark's Queen, Is Screen Royalty"
+
+
+    article-popularity.js
+
+
+
+  2. Lists
+
+
+    Some real-world use cases of Lists are as follows:
+
+    Event queue: Lists are used in many tools, including Resque, Celery, and Logstash
+    Storing most recent user posts: Twitter does this by storing the latest tweets of a user in a List
+
+
+    127.0.0.1:6379> LPUSH books "Clean Code"
+    127.0.0.1:6379> RPUSH books "Code Complete"
+    127.0.0.1:6379> LPUSH books "Peopleware"
+
+    127.0.0.1:6379> LLEN books
+    127.0.0.1:6379> LINDEX books 1
+
+    127.0.0.1:6379> LRANGE books 0 1
+
+    127.0.0.1:6379> LRANGE books 0 -1
+    127.0.0.1:6379> LPOP books 
+    127.0.0.1:6379> RPOP books 
+
+
+
+ 3. Hashes
+
+    Hashes are a great data structure for storing objects 
+    because you can map fields to values. 
+    They are optimized to use memory efficiently and look for data very fast.
+    In a Hash, both the field name and the value are Strings. 
+    Therefore, a Hash is a mapping of a String to a String.
+
+
+    127.0.0.1:6379> HSET movie "title" "The Godfather"
+    127.0.0.1:6379> HMSET movie "year" 1972 "rating" 9.2 "watchers" 10000000
+    127.0.0.1:6379> HINCRBY movie "watchers" 3
+    127.0.0.1:6379> HGET movie "title"
+    127.0.0.1:6379> HMGET movie "title" "watchers"
+
+    127.0.0.1:6379> HDEL movie "watchers"
+    127.0.0.1:6379> HGETALL movie
+
+
+
+
+Advanced Data Types
+
+
+ 4. Sets
+
+ A Set in Redis is an unordered collection of distinct Strings
+
+ Internally, a Set is implemented as a hash table, 
+ which is the reason that some operations are optimized: member addition, removal, and lookup run in O(1), constant time.
+
+ The maximum number of elements that a Set can hold is 232-1, 
+ which means that there can be more than 4 billion elements per Set.
+
+ Data filtering: For example, filtering all flights that depart from a given city and arrive in another
+ Data grouping: Grouping all users who viewed similar products (for example, recommendations on Amazon.com)
+ Membership checking: Checking whether a user is on a blacklist
+
+
+127.0.0.1:6379> SADD user:max:favorite_artists "Arcade Fire" "Arctic Monkeys" "Belle & Sebastian" "Lenine"
+127.0.0.1:6379> SADD user:hugo:favorite_artists "Daft Punk" "The Kooks" "Arctic Monkeys"
+
+127.0.0.1:6379> SINTER user:max:favorite_artists user:hugo:favorite_artists
+127.0.0.1:6379> SDIFF user:max:favorite_artists user:hugo:favorite_artists
+127.0.0.1:6379> SUNION user:max:favorite_artists user:hugo:favorite_artists
+
+127.0.0.1:6379> SRANDMEMBER user:max:favorite_artists
+127.0.0.1:6379> SRANDMEMBER user:max:favorite_artists
+
+127.0.0.1:6379> SISMEMBER user:max:favorite_artists "Arctic Monkeys" 
+127.0.0.1:6379> SREM user:max:favorite_artists "Arctic Monkeys"
+127.0.0.1:6379> SISMEMBER user:max:favorite_artists "Arctic Monkeys"
+
+127.0.0.1:6379> SMEMBERS user:max:favorite_artists
+
+
+
+5 - Sorted Sets
+
+Sorted Set operations are fast, but not as fast as Set operations,
+because the scores need to be compared.
+
+
+Sorted Sets could be used to:
+• Build a real time waiting list for customer service
+• Show a leaderboard of a massive online game that displays the top players, users with similar scores, or the scores of your friends
+• Build an autocomplete system using millions of words
+
+
+127.0.0.1:6379> ZADD leaders 100 "Alice"
+127.0.0.1:6379> ZADD leaders 100 "Zed" 
+127.0.0.1:6379> ZADD leaders 102 "Hugo"
+127.0.0.1:6379> ZADD leaders 101 "Max" 
+
+127.0.0.1:6379> ZREVRANGE leaders 0 -1
+127.0.0.1:6379> ZREVRANGE leaders 0 -1 WITHSCORES
+
+
+127.0.0.1:6379> ZSCORE leaders "Max"
+127.0.0.1:6379> ZRANK leaders "Max"
+127.0.0.1:6379> ZREVRANK leaders "Max"
+
+
+
+6. Bitmaps
+
+ Bitmaps are memory efficient, support fast data lookups,
+ and can store up to 232 bits (more than 4 billion bits).
+
+ Redis Key        data-type   amt of bits per user                  Total-memory
+
+visits:2015-01-01 Bitmap      1 bit   5 million  1 * 5000000 bits = 625kB
+visits:2015-01-01 Set         32 bits 2 million 32 * 2000000 bits = 8MB
+
+
+
+Bitmaps are a great match for applications that involve real-time analytics, because they can tell whether a user performed an action (that is, "Did user X perform action Y today?") or how many times an event occurred (that is, "How many users performed action Y this week?"):
+
+• Did user 1 read Redis Essentials today?
+• Did user 1 play Angry Birds this week?
+• How many users read Redis Essentials last month?
+• How many users played Angry Birds this year?
+
+
+127.0.0.1:6379> SETBIT visits:2015-01-01 10 1 
+127.0.0.1:6379> SETBIT visits:2015-01-01 15 1 
+127.0.0.1:6379> SETBIT visits:2015-01-02 10 1 
+127.0.0.1:6379> SETBIT visits:2015-01-02 11 1 
+
+127.0.0.1:6379> GETBIT visits:2015-01-01 10 (integer) 1
+127.0.0.1:6379> GETBIT visits:2015-01-02 15 (integer) 0
+
+
+
+
+
+
+Time Series (A Collection of Observations)
+
+
+    Examples of time series are:
+
+    • Usage of specific words or terms in a newspaper over time
+    • Minimum wage year-by-year
+    • Daily changes in stock prices
+    • Product purchases month-by-month
+    • Climate changes
+
+
+
+
+
+
+
