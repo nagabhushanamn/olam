@@ -62,7 +62,7 @@ var v;
 
 //---------------------------------------------------
 
-// 2. complex / referenece ==> objects / user-defined types
+// 2. complex / reference ==> objects / user-defined types
 
 //---------------------------------------------------
 
@@ -79,12 +79,103 @@ var v;
 */
 
 
+//var config = new Object(); 
+//config.url = "http://";
+//config.httpMethod = 'GET';
+//config.onSuccess = function () {
+//    console.log('im executing on success');
+//}
+//delete config.httpMethod;
+
+//......
+
+
+//-------------------------------------------------------------------
+// Literal-style object ( object which we can create without 'new' operator )
+//-------------------------------------------------------------------
+
+// 1. Object
+
 var config = new Object(); 
 config.url = "http://";
 config.httpMethod = 'GET';
 config.onSuccess = function () {
     console.log('im executing on success');
-}
-delete config.httpMethod;
+};
 
-//......
+// or   ( literal style _
+
+var newConfig={
+		url:"http://",
+		httpMethod:'GET',
+		onSuccess:function(){
+			console.log('im executing on success');
+		}
+};
+
+
+//-------------------------------------------------------------------
+
+// 2. Array
+
+var arr=new Array();
+arr[0]="item-1";
+arr[1]="item-2";
+arr.push("item-3");
+
+// or ( Literal style )
+
+var newArr=["item-1","item-2","item-3"];
+
+//-------------------------------------------------------------------
+
+// 3. RegExp
+
+var adharCardPattern=new RegExp("\\d{4}-\\d{4}-\\d{4}");
+// or ( Literal style )
+var adharCardPatternNew=/\d{4}-\d{4}-\d{4}/;
+
+//-------------------------------------------------------------------
+
+// 4.  Function
+
+var add=new Function("n1","n2","var result=n1+n2;return result;");
+// or ( Literal style )
+function add(n1,n2){
+	var result=n1+n2;
+	return result;
+}
+
+//-------------------------------------------------------------------
+
+
+
+// How to access obj's properties ?
+
+/*
+ *  2 ways
+ *  
+ *  way-1 : '.' , if property dont have dash or space
+ *  else
+ *  way-2 : '[]' 
+ * 
+ */
+
+var person={
+		name:'Nag',
+		"home-address":"chennai"
+};
+
+person.name="Nag N";
+console.log(person.name);
+
+person['home-address']="bengalore";
+console.log(person['home-address']);
+
+
+
+
+
+
+
+
