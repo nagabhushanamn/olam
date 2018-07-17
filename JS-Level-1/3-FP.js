@@ -8,6 +8,7 @@
  * Functional Programming ( FP ) 
  * ------------------------------
  * 
+ * 
  * Principles
  * 
  *  - A function can be stored in a variable or value 
@@ -16,10 +17,10 @@
  * 
  * 
  */
-
 // -----------------------------------------------------------------------
 /*
  * // How to create function in .js-lang ?
+ * 
  * 
  * 2 ways
  * 
@@ -28,6 +29,7 @@
  *  => Named function 
  *  => function-obj created ate scope-creation phase 
  *  => always get hoist with function-object
+ * 
  * 
  * 2. function expression
  * 
@@ -38,8 +40,8 @@
  */
 
 // -----------------------------------------------------------------------
-
 // 1. function declaration
+//-----------------------------------------------------------------------
 //
 // console.log(add(12,13));
 //
@@ -47,8 +49,11 @@
 // return n1+n2;
 // }
 // console.log(add(12,13));
+
 // -----------------------------------------------------------------------
 // 2. function expression
+// -----------------------------------------------------------------------
+
 // console.log(add(12,13)); // error
 // var add=function(n1,n2){
 // return n1+n2;
@@ -60,15 +65,19 @@
 //
 // var userType;
 // var action;
+//
 // function login(){
 // userType="admin"; // 'guest'
 // }
+//
 // login();
+
 // if(userType==="admin"){
 // action=function(){console.log('admin action');}
 // }else{
 // action=function(){console.log('guest action');}
 // }
+
 // action();
 
 // -----------------------------------------------------------------------
@@ -164,15 +173,18 @@
 //}
 
 
-// can  we overload function in .js-lang by params ? No
+
+// can we overload function in .js-lang by params ? No
 
 //function getFood(){
 //	return "No Food";
 //}
+//
 //function getFood(pay){
 //	if(arguments.length===0)return "No Food";
 //	return "biryani";
 //}
+//
 //console.log(getFood());
 
 
@@ -181,7 +193,6 @@
 //-----------------------------------------------------------------------
 // Function with default-params  ( ES6 )
 //-----------------------------------------------------------------------
-
 
 
 
@@ -213,6 +224,88 @@
 //}
 //func(1,2,3,4,5,6,7,8,9);
 
+
+
+//-----------------------------------------------------------------------
+
+
+//  Function 'closure'
+
+
+
+/*
+ * 
+ * 
+ * A closure is a function having access to the parent scope,
+ * even after the parent function has closed.
+ * 
+ * 
+ * 
+ */
+
+
+
+//function teach(sub){
+//	console.log('teaching '+sub);
+//	let notes=sub+"-notes";
+//	let fun="bla bla";
+//	function learn(){
+//		console.log('learning with '+notes);
+//	}
+//	//learn();
+//	console.log('teaching ends..');
+//	return learn;
+//}
+//
+//let learnFunc=teach('.js');
+//learnFunc();
+//learnFunc();
+
+
+/*
+ * 
+ *  why/where we need closures ?
+ *  
+ *  => to abstract public behav from modules
+ *  => while function executing async, to access parent-scope
+ * 
+ * 
+ */
+
+
+// use : 1 => to abstract public behav from module
+
+/*
+ * 
+ * .js-module   e.g counter module
+ * 
+ * 				- count
+ *              - doCount()
+ *              - getCount()
+ * 
+ */
+
+
+// Self-executable function   | IIFE ( Immedi  Invokable Func.. Exp )   pattern 
+
+const counter=(function(){
+	
+	let count=0; // private
+	
+	// public
+	function doCount(){
+		count++;
+	}
+	function getCount(){
+		return count;
+	}
+	
+	return {
+		doCount:doCount,
+		getCount:getCount
+	};
+	
+})();
 
 
 
