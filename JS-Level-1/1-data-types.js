@@ -172,6 +172,16 @@ console.log(person.name);
 person['home-address']="bengalore";
 console.log(person['home-address']);
 
+var obj={
+		1:'one',
+		2:'Two',
+		1000:'10k'
+};
+
+//-------------------------------------------------------------------
+
+
+
 
 
 
