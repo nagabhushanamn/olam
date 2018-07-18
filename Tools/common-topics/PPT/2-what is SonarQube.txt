@@ -1,5 +1,6 @@
 
 
+---------------------------------------------------------------------
 what is sonar-qube?
 
 1. free & open source
@@ -11,6 +12,7 @@ what is sonar-qube?
 7. can work with many buld tools - ANT, Maven,Gradle
 8. Eclipse --sonarlint--
 
+---------------------------------------------------------------------
 
 SonarQube  Arch
 ------------------
@@ -21,7 +23,7 @@ SonarQube  Arch
 4. Database
 5. Web analysis report ( http://localhost:9000)
 
-
+---------------------------------------------------------------------
 
 SonarQube Setup
 ------------------
@@ -29,30 +31,145 @@ SonarQube Setup
 - get&un zip
 - change properties if required
 - start
-- 
+
+---------------------------------------------------------------------
+
+sonar-runner
+
+    sonar-scanner.properties
+
+        - sonar.host.url=http://localhost:9000
+
+    export PATH=$PATH:/Users/nag-training/Downloads/sonar-scanner-3.2.0.1227-macosx/bin/
+
+---------------------------------------------------------------------
 
 
-SonarQube with Maven-scanner
----------------------------
+Seven Axes of Quality
+
+The axes that SonarQube mea-sures a project against are as follows:
+
+     Potential bugs
+     Coding rules 
+     Tests
+     Duplications 
+     Comments
+     Architecture and design 
+     Complexity
+---------------------------------------------------------------------
+
+What issues mean, and why they’re potential problems
+
+     Bugs
+     Potential bugs
+     Indications of (potential) programmer error
+     Things that may lead to future programmer error 
+     Inefficiencies
+     Style inconsistencies (future productivity obstacles)
+
+bugs category include the following:
+
+     Logic errors that would lead to null pointer exceptions
+     Failures to close file handles or database connections
+     Bad behavior in a multithreaded environment
+     Methods designed to check equality that always return false (or true)  Impossible class casts
+
+Potential bugs category include the following:
+
+     Potential null pointer exceptions, which happen only under certain conditions 
+     Null checks that dereference the items they’re checking
+     Math operations that use the wrong precision or lose precision
+
+
+Indications of (potential) programmer error
+
+     Comparing objects with == or != rather than the .equals() method
+     Conditionals that assign rather than compare, such as if(count=1), 
+       which always returns true, versus if(count==1), which is truly a conditional
+     Unused members or methods
+     Catch blocks that swallow exceptions rather than logging or passing them on
+
+
+Things that may lead to future programmer error
+
+
+     Classes that try to do too much and need to be chopped up 
+     Methods that are too long and complex
+     Conditionals with too many clauses
+
+
+Inefficiencies
+
+     Unneeded import declarations
+     Suboptimal use of the special Java math objects like BigDecimal 
+     Unused members and methods
+
+Style inconsistencies (future productivity obstacles)
+
+
+---------------------------------------------------------------------
+
+Pre-work
+
+a. Picking a rule profile
+
+e.g
+
+    For Java, SonarQube provides following profiles:
+    
+    Sonar way,
+    FindBugs, 
+    
+    It sets Sonar way as the default.
+
+
+b. Viewing profiles and changing the default
+
+c. Related plugins  e.g SCM Activity plugin    
+
+
+---------------------------------------------------------------------
+
+
+Working with duplicate code
+
+
+    Common causes of code duplication
+
+        - Laziness
+        - Risk of regressions
+        - Absence of refactoring
+        - Strict deadlines; never enough time
+        - Poor team communication
+        - Misunderstandings
+        - Merging projects
+
+
+        Identifying duplications
+
+         Duplications in the same file
+         Duplications in different files in a project
+         Duplications across multiple projects (off by default)
+
+
+        Realizing the impact of code duplication
+
+        - The DRY principle: minimizing and eliminating duplications
+
+
+        Cleaning up your duplications
+
+        -  Introduction to refactoring patterns
+        -  Applying patterns to remove code duplication
+        -  Time for a new commons library?
 
 
 
-Integerate SonarQube with JENKINS
----------------------------------
+        Related plugin : Useless Code Tracker plugin.
 
 
 
+---------------------------------------------------------------------
 
+Ensuring that your code is doing things right
 
------------------------------------------
-
-Java - Naming conventions
-
-
-keywords ==> lower-case
-package names ==> lower-case
-Type names ( class , interface , enum , annotation ) ==> Pascal-case   ( A____B____C____)
-var / method    ==> camel-case  ( _____A____B_____)
-constant var    ==> upper-case
-
-----------------------------------------------

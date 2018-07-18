@@ -2,6 +2,8 @@
  * http://usejsdoc.org/
  */
 
+"use strict"
+
 /*
   
  * 
@@ -227,9 +229,8 @@
 
 
 //-----------------------------------------------------------------------
-
-
 //  Function 'closure'
+//-----------------------------------------------------------------------
 
 
 
@@ -309,8 +310,92 @@ const counter=(function(){
 
 
 
+//-----------------------------------------------------------------------
+
+// Q
+
+//let getName=function(){
+//	return "Nag";
+//};
+//let name=getName();
 
 
+//-----------------------------------------------------------------------
+//	Function Binding  ( if function nust be executed by an object )
+//-----------------------------------------------------------------------
+
+//  by default function not bound to any object i.e 'this ==> undefined'
+
+/*
+ * 
+ *  1. static-function-binding
+ *  2. dynamic-function-binding
+ * 
+ * 
+ */
+
+
+//1. static-function-binding
+
+
+
+//
+//let p1={
+//		name:'Nag',
+//		sayName:function(){console.log('im '+this.name)}
+//};
+//let p2={
+//		name:'olam',
+//		sayName:function(){console.log('im '+this.name)}
+//};
+
+
+// better code
+//
+//function sayNameForAll(){
+//	console.log('im '+this.name);
+//}
+//
+//let p1={
+//		name:'Nag',
+//		sayName:sayNameForAll
+//};
+//let p2={
+//		name:'olam',
+//		sayName:sayNameForAll
+//};
+//
+////sayNameForAll();
+//p1.sayName();
+//p2.sayName();
+//
+
+//-----------------------------------------------------------------------
+
+// Q
+
+//let pName="Global";
+
+//const person={
+//		pName:'Nag',
+//		sayName:function(){
+//			let pName="Local";
+//			console.log('im '+pName);  // read scope 
+//			console.log('im '+person.pName); // obj's property
+//			console.log('im '+this.pName);
+//		}
+//}
+//
+//person.sayName();
+//
+//let oldPerson=person;
+//
+//person={pName:'Ria'};
+//
+//oldPerson.sayName();
+
+
+//-----------------------------------------------------------------------
 
 
 
