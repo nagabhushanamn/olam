@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>register</title>
+</head>
+<body>
+
+	<form action="registerme" method="post">
+		<input name="userName" autofocus="autofocus" placeholder=""/> <br/>
+		Password : <input type="password" name="password"><br/>
+		Gender   : <input type="radio" value="male" name="gender"/> Male
+		           <input type="radio" value="female" name="gender"/> Female
+		           <br/>
+		Languages: <input type="checkbox" name="lang" value="tn"> Tamil
+		           <input type="checkbox" name="lang" value="en"> English
+		           <input type="checkbox" name="lang" value="ar"> Arabic  
+		           <br/>
+		Country:   <select name="country" size="5" multiple="multiple">
+					<option value="in">India</option>	
+					<option value="uae">UAE</option>
+					<option value="qa" selected="selected">Qatar</option>
+					<optgroup label="euro">
+						<option>fr</option>
+						<option>eng</option>
+					</optgroup>
+				   </select>      
+				   <br/>
+		File      <input type="file">		   
+		Address  : <textarea rows="6" cols="35"></textarea>	
+		<input type="reset" value="reset">
+		<input type="submit" value="submit">	 
+		
+		<!-- html-5 -->
+		
+		
+		<input type="email">
+		<input type="url">
+		<input type="date">
+		<input type="datetime">
+		<input type="time">
+		<input type="month">
+		<input type="number">
+		<input type="range">
+		
+	</form> 
+
+
+</body>
+</html>

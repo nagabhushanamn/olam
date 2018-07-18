@@ -1,0 +1,41 @@
+
+
+
+
+ > node -v
+ > npm -v
+ 
+ > npm install / i live-server -g    : this will install server-script for Node.js runtime
+ 
+ 
+ on project drectory
+ 
+ > live-server --port=8080            : considers current directory as project directory
+ 
+ 
+ 
+  
+ > npm get prefix
+ > set path=%PATH%;<path>
+ 
+ 
+ ------------------------------------------------
+ 
+ 
+ 
+ types of Tags
+ 
+ 
+ -> with body
+ -> without body   : i.e no child tags
+ 
+ -> with attributes/properties
+ -> without attribute
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
