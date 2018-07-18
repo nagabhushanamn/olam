@@ -1,0 +1,148 @@
+
+
+------------------------------------------------------------------
+	
+	client               server
+
+	     <--------------->
+	        TCP/IP
+------------------------------------------------------------------
+	                
+ Top layer : Appln-layer  ( HTTP , FTP , SMPTP ,TELNET  )
+ 		 		       
+ web-browser  <---------->  web-server 
+ 
+------------------------------------------------------------------
+
+  HTML ( Hypher Text Markup Language )  ==> w3c recommendation
+  
+ ------------------------------------------------------------------
+  
+  HTML  ==> content
+  CSS   ==> Cascading Style sheet
+  JavaScript => Behavior
+  
+ 
+ ------------------------------------------------------------------
+ 
+ 
+  what javascript-lang can do in HTML-page in browser-envi?
+  
+   	using browser provided web-APIs,
+   	JavaScript-lang can bring any dynamic activity/data to web-page
+   	
+   	
+   	browser web-APIs  ==> are based on 'w3c' recommendations 
+   	browser implemented all web-APIs natively & abstracted as JavaScript objects & functions
+  
+  	
+	browser-APIs  :
+	
+    ==> DOM, XHR,Timer,....
+  
+ 	using DOM API
+ 	---------------
+     -> can create,retreive,update,delete HTML elements
+	 -> can change element's inner text/html content 
+	 -> can change element's attributes/properties
+	 -> can change element's styles ( css )
+	 -> can listen events on elements
+	 -> can validate form-fields 
+	 -> can create rich UI-components
+	 .....
+	 
+	 using XHR API
+	 ---------------
+	 -> can communicate with server-side programs async ( AJAX )
+	 
+	 
+	 using Timer API
+	 -------------------
+	 -> can execute any action on timeout/time-interval
+  
+  
+  
+     HTML 5 APIs
+     -------------
+     
+     Ref : https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5
+  
+  
+  
+  ------------------------------------------------------------------
+  
+  
+  
+  
+  problems with plain-js ( your code ) with browser apis
+  ----------------------------------------------------------
+  
+	  
+	=> browser compatability issues
+	=> memory issues ( i.e clean un-used DOM elements)
+	=> performance issues ( i.e must be minimal DOM changes)
+	=> data-binding is manual
+	=> too much code for simple operations
+	=> code organizations is too difficult  
+  
+  
+  
+  ----------------------------------------------------------
+  
+	server-side page techonologies
+  	
+  	i.e JSP , PHP , ASP.net , etc.......
+  	
+  	
+  problems:
+    => on every req, server shud re-construct same UI layout with new content , keeping client state
+    => on every resp, we are sending same resources ( css, js , images , fonts ) over n/w , increase n/w bandwidth
+    => on every resp, browser re-loads current page with new-page
+  	
+  
+  ----------------------------------------------------------
+  
+  
+	soln :
+
+ 	using third-party's JavaScript lib & F.Ws
+ 	
+ 	1. jQuery
+ 	
+ 		
+ 		
+    MVC pattern based F.W
+    
+    2. backbone.js  / MarionetJS
+    3. knockout.js
+    4. AngularJS  from google team
+    5. EmberJS
+    6. EXTJS  from sencha
+    7. DOJO
+    ..........
+    
+    
+    
+    w3c  ==> web-component / custom-elements spec 		  : component based arch
+  
+  
+    1. ReactJS   from facebook  : v16
+    2. Angular   : v6
+    3. Vue
+    4. Aurelia js
+    
+    .....
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
