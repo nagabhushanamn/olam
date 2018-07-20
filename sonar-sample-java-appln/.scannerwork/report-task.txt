@@ -1,0 +1,6 @@
+projectKey=my:javaAppln
+serverUrl=http://localhost:9000
+serverVersion=6.7.4.38452
+dashboardUrl=http://localhost:9000/dashboard/index/my:javaAppln
+ceTaskId=AWS2kg7B79EvJXqOMX6S
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWS2kg7B79EvJXqOMX6S

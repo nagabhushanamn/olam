@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductsService } from './products.service';
+import { CartServiceService } from './cart-service.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent {
   itemsCount: number = 0;
   products: any = []
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService, private cartService: CartServiceService) { }
 
   ngOnInit() {
     this.productsService.loadProducts()
@@ -24,20 +25,29 @@ export class AppComponent {
         console.log(products);
         this.products = products;
       });
+    this.cartService.getCart("nag")
+      .subscribe(cart => {
+        console.log(cart);
+      })
+
   }
 
   addToCart(event) {
     let item = event.item;
     let qty = event.qty;
-    let id = item.id;
-    let line = this.cart[id];
-    if (line) {
-      line = Object.assign({}, line, { qty })
-    } else {
-      line = Object.assign({ item, qty })
-    }
-    this.cart = Object.assign({}, this.cart, { [id]: line })
-    this.itemsCount = Object.keys(this.cart).length;
+
+    this.cartService.addToCart('nag', { name: item.name, price: item.price, qty })
+      .subscribe(() => {
+        let id = item.id;
+        let line = this.cart[id];
+        if (line) {
+          line = Object.assign({}, line, { qty })
+        } else {
+          line = Object.assign({ item, qty })
+        }
+        this.cart = Object.assign({}, this.cart, { [id]: line })
+        this.itemsCount = Object.keys(this.cart).length;
+      })
 
   }
 

@@ -1,0 +1,28 @@
+
+
+
+Redis
+-------------
+
+program
+
+  
+     data
+
+         -  main-memory
+         -  file-system / secondary memory
+
+
+   ---------------------------------------------
+
+   - file-system
+   - relational /SQL databases 
+        - schema  / structured data 
+
+   - NoSQL
+        - document-based   
+                - MongoDB   
+        - key & value  
+                - Redis  ( in-memory )    
+
+    ---------------------------------------------

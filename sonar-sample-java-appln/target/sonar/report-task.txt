@@ -1,0 +1,6 @@
+projectKey=olam:sonar-sample-java-appln
+serverUrl=http://localhost:9000
+serverVersion=6.7.4.38452
+dashboardUrl=http://localhost:9000/dashboard/index/olam:sonar-sample-java-appln
+ceTaskId=AWS2oS3f79EvJXqOMX6a
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWS2oS3f79EvJXqOMX6a

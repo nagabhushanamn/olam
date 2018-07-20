@@ -27,12 +27,15 @@ When to use Redis in your application
         Since Redis is an in-memory data storage system, 
         using Redis as a cache in front of an RDBMS usually expedites the database query process.
 
-        Here is a simple use case: Before querying the RDBMS, we first look up the record in Redis.
-        If the record does not exist in Redis, we query the RDBMS and put the record into Redis
+        Here is a simple use case: Before querying the RDBMS,
+        we first look up the record in Redis.
+        If the record does not exist in Redis, 
+        we query the RDBMS and put the record into Redis
 
         When writing to the RDBMS, we also write the record to Redis. 
         Records in the cache are associated with a timeout
-        or eviction policy such as Least Recently Used (LRU) in order to limit the cache usage.
+        or eviction policy such as Least Recently Used (LRU)
+        in order to limit the cache usage.
 
 
 
@@ -40,10 +43,7 @@ When to use Redis in your application
 
 -------------------------------------------------------------------------
 
-
-
  installing Redis
-
 
  - Redis is an open software written in pure C language 
    so that we can install it by compilation.
@@ -56,6 +56,10 @@ Data Types
 
 
 a. string
+
+
+ SET key value 
+ GET key 
 
  127.0.0.1:6379> SET "Extreme Pizza" "300 Broadway, New York, NY" 
  127.0.0.1:6379> GET "Extreme Pizza" 
@@ -151,7 +155,7 @@ a. string
   
   127.0.0.1:6379> SADD "Original Buffalo Wings" "affordable" "spicy" "busy" "great taste"
   127.0.0.1:6379> SISMEMBER "Original Buffalo Wings" "busy"
-  1127.0.0.1:6379> SISMEMBER "Original Buffalo Wings" "costly"
+  127.0.0.1:6379> SISMEMBER "Original Buffalo Wings" "costly"
   127.0.0.1:6379> SREM "Original Buffalo Wings" "busy" "spicy"
   127.0.0.1:6379> SISMEMBER "Original Buffalo Wings" "busy"
   127.0.0.1:6379> SISMEMBER "Original Buffalo Wings" "spicy"

@@ -1,7 +1,6 @@
 
 
 what is Redis ?
-
 //----------------------------------------------------------------------------------------------
 
 Redis is a NoSQL (Not only SQL) advanced key-value data store
@@ -14,10 +13,12 @@ therefore read and write operations are very fast.
 
 It can also cause data to persist in the disk. 
 
-Data persistence in Redis can be achieved by creating a binary snapshot of the stored data 
+Data persistence in Redis can be achieved 
+by creating a binary snapshot of the stored data 
 or a human-readable file with a sequence of all executed commands over time.
 
-Redis includes configurable key expiration, transactions, and publish/subscribe features.
+Redis includes configurable key expiration,
+transactions, and publish/subscribe features.
 
 It also provides Lua scripting to extend Redis to create new commands
 
@@ -265,7 +266,9 @@ visits:2015-01-01 Set         32 bits 2 million 32 * 2000000 bits = 8MB
 
 
 
-Bitmaps are a great match for applications that involve real-time analytics, because they can tell whether a user performed an action (that is, "Did user X perform action Y today?") or how many times an event occurred (that is, "How many users performed action Y this week?"):
+Bitmaps are a great match for applications that involve real-time analytics,
+because they can tell whether a user performed an action (that is, "Did user X perform action Y today?") 
+or how many times an event occurred (that is, "How many users performed action Y this week?"):
 
 • Did user 1 read Redis Essentials today?
 • Did user 1 play Angry Birds this week?
